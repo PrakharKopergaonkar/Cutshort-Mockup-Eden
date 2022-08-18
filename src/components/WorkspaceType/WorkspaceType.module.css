@@ -1,0 +1,25 @@
+.image {
+    transform: scale(0.1);
+}
+
+.cardHolder {
+    display: flex;
+    height: 13rem;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.cardActive {
+    border-color: #5a4ad1;
+}
+
+.img {
+    transform: scale(0.6);
+    width: 40%;
+}
+
+.imgActive {
+    filter: invert(25%) sepia(45%) saturate(3530%) hue-rotate(236deg) brightness(94%) contrast(86%);;
+}

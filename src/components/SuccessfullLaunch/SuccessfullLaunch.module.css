@@ -1,0 +1,11 @@
+.successLogo {
+    width: 8rem;
+    height: 6rem;
+    background-color: #5a4ad1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-left: 35%;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}

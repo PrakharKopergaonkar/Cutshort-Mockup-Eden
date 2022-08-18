@@ -1,0 +1,17 @@
+.header {
+    font-weight: bold;
+    font-size: 1.4rem;
+    padding-top: 0.2rem;
+    text-align: center;
+}
+
+.logoImage {
+    filter: invert(25%) sepia(45%) saturate(3530%) hue-rotate(236deg) brightness(94%) contrast(86%);;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    align-items: center;
+}
