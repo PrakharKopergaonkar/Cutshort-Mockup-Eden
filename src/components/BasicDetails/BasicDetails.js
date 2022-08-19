@@ -17,7 +17,7 @@ function BasicDetails() {
     },[basicDetails])
 
     const disableNext = useMemo(() => {
-        return fullName.trim().length==0 || displayName.trim().length==0
+        return fullName.trim().length===0 || displayName.trim().length===0
     }, [fullName, displayName])
 
     const handleSubmit = () => {
