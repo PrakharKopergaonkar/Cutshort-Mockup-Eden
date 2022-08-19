@@ -17,9 +17,7 @@ function BasicDetails() {
         setFullName(basicDetails.fullName);
         setDisplayName(basicDetails.displayName);
     }, [basicDetails])
-
-
-
+    
     const handleSubmit = () => {
         let valid = true;
         if (fullName.trim().length === 0) {

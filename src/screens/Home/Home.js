@@ -30,7 +30,7 @@ const Home = () => {
       <Stepper />
       <br />
       <div style={{width:"30rem"}}>
-        <PageComponent />
+        {PageComponent()}
       </div>
     </div>
   )
