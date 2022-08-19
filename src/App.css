@@ -5,6 +5,7 @@
     margin-left: auto;
     border-style: none;
     font-size: 14px;
+    height: 2.5rem;
 }
 
 .commonSubmitButton:hover {
@@ -14,4 +15,8 @@
 .commonSubmitButton:focus {
     background-color: #392f85;;
     box-shadow: none !important;
+}
+
+.commonSubmitButton:disabled {
+    background-color: #5a4ad1;
 }

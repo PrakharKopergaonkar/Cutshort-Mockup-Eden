@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux/es/exports';
 import PageHeading from '../PageHeading/PageHeading'
 import { Button, Form } from 'react-bootstrap';
@@ -15,6 +15,10 @@ function WorkplaceDetails() {
         setWorkspaceName(workspaceDetails.workspaceName)
         setDisplayName(workspaceDetails.displayName)
     }, [workspaceDetails])
+
+    const disableNext = useMemo(() => {
+        return workspaceName.trim().length === 0
+    }, [workspaceName])
 
     const handleSubmit = () => {
         dispatch(setWorkspaceDetails(workspaceName, displayName))
@@ -37,7 +41,8 @@ function WorkplaceDetails() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formDisplayName">
-                <Form.Label>Display Name</Form.Label>
+                <Form.Label>Display Name </Form.Label>
+                <Form.Label style={{color:"lightgrey"}}> &nbsp; (optional) </Form.Label> 
                 <div style={{ display: "flex" }}>
                     <Form.Control
                         placeholder='www.eden.com/'
@@ -52,7 +57,7 @@ function WorkplaceDetails() {
                 </div>
             </Form.Group>
             <br />
-            <Button className="commonSubmitButton" onClick={handleSubmit}>
+            <Button className="commonSubmitButton" onClick={handleSubmit} disabled={disableNext}>
                 Create Workspace
             </Button>
         </div>

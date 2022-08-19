@@ -1,8 +1,10 @@
 import React from 'react'
 import PageHeading from '../PageHeading/PageHeading'
 import { Button } from 'react-bootstrap';
+import { useSelector } from 'react-redux/es/exports';
 import classes from './SuccessfullLaunch.module.css'
 export default function SucessFullLaunch() {
+  const {displayName} = useSelector((state) => state.basicDetails)
   const handleSubmit = () => {
     console.log("launch...")
   }
@@ -12,7 +14,7 @@ export default function SucessFullLaunch() {
         <img src='./images/tick.svg' alt="" style={{filter:"invert(1)"}} />
       </div>
       <PageHeading
-        heading="Congralutations, Eren!"
+        heading={`Congralutations, ${displayName}!`}
         subHeading="You have completed onboarding, you can start using the Eden"
       />
       <br />

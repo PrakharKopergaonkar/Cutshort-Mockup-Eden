@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import PageHeading from '../PageHeading/PageHeading';
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
@@ -15,6 +15,10 @@ function BasicDetails() {
         setFullName(basicDetails.fullName);
         setDisplayName(basicDetails.displayName);
     },[basicDetails])
+
+    const disableNext = useMemo(() => {
+        return fullName.trim().length==0 || displayName.trim().length==0
+    }, [fullName, displayName])
 
     const handleSubmit = () => {
         dispatch(setBasicDetails(fullName, displayName))
@@ -33,6 +37,7 @@ function BasicDetails() {
                     placeholder="Steve Jobs"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
+                    required
                 />
             </Form.Group>
 
@@ -45,7 +50,7 @@ function BasicDetails() {
                 />
             </Form.Group>
             <br />
-            <Button className="commonSubmitButton" onClick={handleSubmit}>
+            <Button className="commonSubmitButton" onClick={handleSubmit} disabled={disableNext}>
                 Create Workspace
             </Button>
         </div>
