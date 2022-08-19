@@ -19,4 +19,5 @@
 
 .commonSubmitButton:disabled {
     background-color: #5a4ad1;
+    opacity: 80%;
 }
