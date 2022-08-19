@@ -55,7 +55,7 @@ function WorkspaceType() {
                                     </strong>
                                 </Card.Title>
                                 <Card.Text>
-                                    Write better. Think more clearly. Stay organized
+                                    Write better. Think more clearly. Stay organized.
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -85,7 +85,7 @@ function WorkspaceType() {
                                     </strong>
                                 </Card.Title>
                                 <Card.Text>
-                                    Wikis, docs, tasks & project, all in one place.
+                                    Wikis, docs, tasks & projects, all in one place.
                                 </Card.Text>
                             </Card.Body>
                         </Card>

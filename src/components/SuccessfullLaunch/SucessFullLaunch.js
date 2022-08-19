@@ -11,8 +11,9 @@ export default function SucessFullLaunch() {
   return (
     <div>
       <div className={classes.successLogo}>
-        <img src='./images/tick.svg' alt="" style={{filter:"invert(1)"}} />
+        <img src='./images/tick.svg' alt="" style={{filter:"invert(1)", transform:"scale(0.4)"}} />
       </div>
+      <br/>
       <PageHeading
         heading={`Congralutations, ${displayName}!`}
         subHeading="You have completed onboarding, you can start using the Eden"

@@ -2,7 +2,7 @@ import { SET_WORKSPACE_DETAILS } from "../constants/workspaceDetailsConstants";
 
 const initialState = {
     workspaceName: "",
-    displayName:""
+    workspaceUrl:""
 };
 export const workspaceDetailsReducer = (state=initialState, action) => {
     const {type, payload} = action

@@ -45,7 +45,7 @@ function BasicDetails() {
         <div>
             <PageHeading
                 heading="Welcome! First things first..."
-                subHeading="You can always change them later"
+                subHeading="You can always change them later."
             />
             <br />
             <Form.Group className="mb-3" controlId="formBasicName">

@@ -9,22 +9,20 @@ function WorkplaceDetails() {
     const workspaceDetails = useSelector((state) => state.workspaceDetails)
     const dispatch = useDispatch();
     const [workspaceName, setWorkspaceName] = useState("");
-    const [displayName, setDisplayName] = useState("");
+    const [workspaceUrl, setWorkspaceUrl] = useState("");
     const [errorWorkspaceName, setErrorWorkspaceName] = useState(false)
 
     useEffect(() => {
         setWorkspaceName(workspaceDetails.workspaceName)
-        setDisplayName(workspaceDetails.displayName)
+        setWorkspaceUrl(workspaceDetails.workspaceUrl)
     }, [workspaceDetails])
-
-
 
     const handleSubmit = () => {
         if (workspaceName.trim().length === 0) {
             setErrorWorkspaceName(true)
         } else {
             setErrorWorkspaceName(false);
-            dispatch(setWorkspaceDetails(workspaceName, displayName))
+            dispatch(setWorkspaceDetails(workspaceName, workspaceUrl))
             dispatch(incrementStep())
         }
     }
@@ -32,7 +30,7 @@ function WorkplaceDetails() {
         <div>
             <PageHeading
                 heading="Let's setup a home for all your work"
-                subHeading="You can always create another workspace later"
+                subHeading="You can always create another workspace later."
             />
             <br />
             <Form.Group className="mb-3" controlId="formBasicName">
@@ -46,7 +44,7 @@ function WorkplaceDetails() {
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formDisplayName">
-                <Form.Label>Display Name </Form.Label>
+                <Form.Label>Workspace URL </Form.Label>
                 <Form.Label style={{ color: "lightgrey" }}> &nbsp; (optional) </Form.Label>
                 <div style={{ display: "flex" }}>
                     <Form.Control
@@ -56,8 +54,8 @@ function WorkplaceDetails() {
                     />
                     <Form.Control
                         placeholder="Example"
-                        value={displayName}
-                        onChange={(e) => setDisplayName(e.target.value)}
+                        value={workspaceUrl}
+                        onChange={(e) => setWorkspaceUrl(e.target.value)}
                     />
                 </div>
             </Form.Group>
