@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect} from 'react'
 import { Button, Form } from 'react-bootstrap';
 import PageHeading from '../PageHeading/PageHeading';
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
@@ -6,23 +6,40 @@ import { incrementStep } from '../../actions/stepActions';
 import { useSelector } from 'react-redux';
 import { setBasicDetails } from '../../actions/basicDetailsActions';
 function BasicDetails() {
-    const basicDetails = useSelector((state) => state.basicDetails) 
+    const basicDetails = useSelector((state) => state.basicDetails)
     const [fullName, setFullName] = useState("");
     const [displayName, setDisplayName] = useState("");
+    const [errorFullName, setErrorFullName] = useState(false);
+    const [errorDisplayName, setErrorDisplayName] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
         setFullName(basicDetails.fullName);
         setDisplayName(basicDetails.displayName);
-    },[basicDetails])
+    }, [basicDetails])
 
-    const disableNext = useMemo(() => {
-        return fullName.trim().length===0 || displayName.trim().length===0
-    }, [fullName, displayName])
+
 
     const handleSubmit = () => {
-        dispatch(setBasicDetails(fullName, displayName))
-        dispatch(incrementStep())
+        let valid = true;
+        if (fullName.trim().length === 0) {
+            setErrorFullName(true);
+            valid = false
+        } else {
+            setErrorFullName(false)
+        }
+
+        if (displayName.trim().length === 0) {
+            setErrorDisplayName(true);
+            valid = false
+        } else {
+            setErrorDisplayName(false)
+        }
+
+        if (valid) {
+            dispatch(setBasicDetails(fullName, displayName))
+            dispatch(incrementStep())
+        }
     }
     return (
         <div>
@@ -37,7 +54,7 @@ function BasicDetails() {
                     placeholder="Steve Jobs"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    required
+                    style={{borderColor: errorFullName ? "red" : ""}}
                 />
             </Form.Group>
 
@@ -47,10 +64,11 @@ function BasicDetails() {
                     placeholder="Steve"
                     value={displayName}
                     onChange={(e) => setDisplayName(e.target.value)}
+                    style={{borderColor: errorDisplayName ? "red" : ""}}
                 />
             </Form.Group>
             <br />
-            <Button className="commonSubmitButton" onClick={handleSubmit} disabled={disableNext}>
+            <Button className="commonSubmitButton" onClick={handleSubmit}>
                 Create Workspace
             </Button>
         </div>
