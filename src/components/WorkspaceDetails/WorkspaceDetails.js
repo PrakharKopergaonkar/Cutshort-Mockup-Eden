@@ -1,13 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux/es/exports';
 import PageHeading from '../PageHeading/PageHeading'
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import { incrementStep } from '../../actions/stepActions';
+import { setWorkspaceDetails } from '../../actions/workspaceDetailsActions';
 function WorkplaceDetails() {
+    const workspaceDetails = useSelector((state) => state.workspaceDetails)
     const dispatch = useDispatch();
     const [workspaceName, setWorkspaceName] = useState("");
     const [displayName, setDisplayName] = useState("");
+
+    useEffect(() => {
+        setWorkspaceName(workspaceDetails.workspaceName)
+        setDisplayName(workspaceDetails.displayName)
+    }, [workspaceDetails])
+
     const handleSubmit = () => {
+        dispatch(setWorkspaceDetails(workspaceName, displayName))
         dispatch(incrementStep())
     }
     return (

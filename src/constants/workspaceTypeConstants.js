@@ -1,0 +1,1 @@
+export const SET_WORKSPACE_TYPE = "SET_WORKSPACE_TYPE";

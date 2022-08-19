@@ -1,15 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PageHeading from '../PageHeading/PageHeading'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
+import { useSelector } from 'react-redux/es/exports';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { incrementStep } from '../../actions/stepActions';
 import cx from 'classnames';
 import classes from './WorkspaceType.module.css';
+import { setWorkspaceType } from '../../actions/workspaceTypeActions';
 function WorkspaceType() {
     const [type, setType] = useState("myself")
     const dispatch = useDispatch();
+    const workspaceType = useSelector((state) => state.workspaceType);
+
+    useEffect(() => {
+        setType(workspaceType.type);
+    },[workspaceType])
 
     const handleSubmit = () => {
+        dispatch(setWorkspaceType(type));
         dispatch(incrementStep());
     }
 

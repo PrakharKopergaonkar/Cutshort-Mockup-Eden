@@ -2,7 +2,6 @@ import React from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import cx from "classnames";
-
 import classes from './Stepper.module.css'
 import { setStep } from '../../actions/stepActions';
 function StepperComponent() {
@@ -11,9 +10,9 @@ function StepperComponent() {
   //convert steps to array
   const steps = Array(totalSteps).fill().map((_, idx) => 1 + idx);
 
-  //goback to different step
+  //goback to different step if it the step is valid and not the final one
   const handleStep = (validStep, step) => {
-    if(validStep) {
+    if(validStep && currentStep<4) {
       dispatch(setStep(step))
     }
   }

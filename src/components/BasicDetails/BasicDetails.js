@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Form } from 'react-bootstrap';
 import PageHeading from '../PageHeading/PageHeading';
 import { useDispatch } from 'react-redux/es/hooks/useDispatch';
 import { incrementStep } from '../../actions/stepActions';
+import { useSelector } from 'react-redux';
+import { setBasicDetails } from '../../actions/basicDetailsActions';
 function BasicDetails() {
+    const basicDetails = useSelector((state) => state.basicDetails) 
     const [fullName, setFullName] = useState("");
     const [displayName, setDisplayName] = useState("");
-
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setFullName(basicDetails.fullName);
+        setDisplayName(basicDetails.displayName);
+    },[basicDetails])
+
     const handleSubmit = () => {
+        dispatch(setBasicDetails(fullName, displayName))
         dispatch(incrementStep())
     }
     return (
